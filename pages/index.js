@@ -17,7 +17,8 @@ export default function Home()
       </Head>
       <VStack spacing={8}>
         <Heading>Welcome</Heading>
-        <HStack>
+        <Text>Do you know if each character is alive or dead?</Text>
+        <HStack spacing={8}>
           <Link href="/quiz">
             <Button>Start Quiz</Button>
           </Link>
@@ -25,7 +26,7 @@ export default function Home()
             <Button>See Results</Button>
           </Link>
         </HStack>
-        <Text>API created by <Link href="https://breakingbadapi.com/" isExternal>Timbiles</Link></Text>
+
       </VStack>
     </Container>
   )

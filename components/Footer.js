@@ -1,4 +1,4 @@
-import { Box, Text, Link } from "@chakra-ui/react";
+import { Box, Text, Link, HStack } from "@chakra-ui/react";
 
 
 function Footer(props)
@@ -8,7 +8,11 @@ function Footer(props)
       bgColor="brand.800"
       p={6}
     >
-      <Text color="white">Website created by <Link href="https://nickworrall.co.uk/" isExternal>Nick Worrall</Link></Text>
+      <HStack justify="space-evenly">
+        <Text color="white">Website created by <Link href="https://nickworrall.co.uk/" isExternal>Nick Worrall</Link></Text>
+        <Text color="white">API created by <Link href="https://breakingbadapi.com/" isExternal>Timbiles</Link></Text>
+      </HStack>
+
     </Box>
   );
 }

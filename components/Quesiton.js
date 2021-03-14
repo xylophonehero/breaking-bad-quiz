@@ -177,28 +177,11 @@ function Quesiton({ question, handleNextQuestion, allDeathInfo })
                 <Heading fontSize="2xl">
                   {showAnswer === 1 ? "✔️" : "❌"}
                 </Heading>
-                <Text as="cite">{feedback}</Text>
+                <Text as="cite">"{feedback}"</Text>
               </HStack>
 
               <Button onClick={() => handleNextQuestion()}>Next Question</Button>
               <PercentageBar width={300} left={results.correct + (showAnswer === 1 ? 1 : 0)} right={results.incorrect + (showAnswer === -1 ? 1 : 0)} />
-              {/* <Text>Users correct: {Math.floor(100 / (results.correct + results.incorrect + 2) * (results.correct + 1))}%</Text> */}
-              {/* <Flex
-                w="300px"
-                h="50px"
-                bgColor="brand.600"
-              >
-                <Box
-                  as={motion.div}
-                  initial={{ width: 0 }}
-                  animate={{
-                    width: `${300 / (results.correct + results.incorrect + 2) * (results.correct + 1)}px`,
-                    transition: { duration: 1 }
-                  }}
-                  h="50px"
-                  bgColor="brand.800"
-                />
-              </Flex> */}
             </VStack>
 
 
