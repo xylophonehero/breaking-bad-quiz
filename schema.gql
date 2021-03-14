@@ -1,0 +1,5 @@
+type Question{
+  id: Int!
+  correct: Int
+  incorrect: Int
+}
