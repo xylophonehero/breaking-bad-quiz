@@ -24,19 +24,20 @@ function Quiz({ data, deathInfo })
   {
     if (typeof window !== 'undefined')
     {
-      const userAnswers = Cookies.getJSON('answers')
+      var userAnswers = Cookies.getJSON('answers')
       if (!userAnswers)
       {
+        userAnswers = []
         Cookies.set('answers', '[]')
-      } else
-      {
-        const userQuestions = data.filter(x => !userAnswers.some(y => y.id === x.char_id))
-        setQuestions(userQuestions)
-        if (userQuestions.length === 0)
-        {
-          router.push('/results?completed=true')
-        }
       }
+
+      const userQuestions = data.filter(x => !userAnswers.some(y => y.id === x.char_id))
+      setQuestions(userQuestions)
+      if (userQuestions.length === 0)
+      {
+        router.push('/results?completed=true')
+      }
+
     }
   }, [])
 
