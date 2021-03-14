@@ -66,14 +66,18 @@ function Quiz({ data, deathInfo })
     <Container centerContent p={4}>
       <AnimatePresence exitBeforeEnter >
         {questions.length > 0 &&
-          <Question
-            key={questionIndex}
-            question={questions[questionIndex]}
-            handleNextQuestion={handleNextQuestion}
-            allDeathInfo={deathInfo}
-          />
+          <>
+            <Question
+              key={questionIndex}
+              question={questions[questionIndex]}
+              handleNextQuestion={handleNextQuestion}
+              allDeathInfo={deathInfo}
+            />
+            <link rel="preload" href={questions[questionIndex + 1].img} as="image" />
+          </>
         }
       </AnimatePresence>
+
     </Container>
   );
 }

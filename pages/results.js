@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'
 
 import CharacterCard from "@/components/CharacterCard";
+import Link from "next/link";
 
 function Results({ data })
 {
@@ -48,31 +49,28 @@ function Results({ data })
             <Button onClick={handleReset}>Reset Data</Button>
           </>
         }
+        {myResults.length === 0 &&
+          <>
+            <Text>Try answering some questions first!</Text>
+            <Link href="/quiz"><Button>Start Quiz</Button></Link>
+          </>
+        }
 
         {data.map(character =>
         {
           const result = results.find(x => x.data.char_id === character.char_id)
           const myResult = myResults.find(x => x.id === character.char_id)
-          console.log(result)
           if (!myResult || !result)
           {
             return
           }
-
           return (
-
             <CharacterCard
               key={character.char_id}
               character={character}
               result={result.data}
               correct={myResult.correct}
             />
-            //   <div key={character.char_id}>
-            //   <h1>{character.name}</h1>
-            //   {!!result && <p>{result.data.correct}</p>}
-            //   {!!result && <p>{myResult.correct ? "yes" : "no"}</p>}
-            // </div>}
-
           )
         })}
       </VStack>
