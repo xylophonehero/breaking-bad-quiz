@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 
 import { useRouter } from 'next/router'
-import { Box, Button, Container, Heading, HStack } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, HStack, Spinner } from "@chakra-ui/react";
 
 import Question from '@/components/Quesiton'
 import { AnimatePresence } from 'framer-motion';
@@ -65,7 +65,7 @@ function Quiz({ data, deathInfo })
   return (
     <Container centerContent p={4}>
       <AnimatePresence exitBeforeEnter >
-        {questions.length > 0 &&
+        {questions.length > 0 ?
           <>
             <Question
               key={questionIndex}
@@ -73,8 +73,12 @@ function Quiz({ data, deathInfo })
               handleNextQuestion={handleNextQuestion}
               allDeathInfo={deathInfo}
             />
-            <link rel="preload" href={questions[questionIndex + 1].img} as="image" />
+            {questionIndex + 1 < questions.length &&
+              <link rel="preload" href={questions[questionIndex + 1].img} as="image" />
+            }
           </>
+          :
+          <Spinner />
         }
       </AnimatePresence>
 
